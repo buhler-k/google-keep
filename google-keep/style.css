@@ -63,10 +63,11 @@ input:focus{
 }
 
 .tooltip-text{
+    cursor: pointer;
     position: absolute;
     left: 0;
     top: 100%;
-    font-size: 1rem;
+    font-size: 0.8rem;
     background-color: #323232;
     color: white;
     opacity: 0.8;
@@ -75,6 +76,11 @@ input:focus{
     border-radius: 5px;
     visibility: hidden; 
     z-index: 1; 
+}
+
+.tooltip{
+    position: relative;
+    display: inline;
 }
 
 .tooltip:hover .tooltip-text{
@@ -99,6 +105,7 @@ input:focus{
     background-color: #fef0c3;
     border-radius: 50%;
     color: black;
+    cursor: pointer;
 
 }
 
@@ -153,4 +160,34 @@ input:focus{
 
 .form-actions{
     display: flex;
+    
+}
+
+.active-form form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%; 
+}
+
+.active-form form .form-actions .icons {
+    display: flex;
+    
+}
+
+.active-form form .form-actions{
+    display: flex;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.small-icon{
+    cursor: pointer;
+    color: black;
+    font-size: 1rem;
 }
