@@ -1,5 +1,6 @@
 class Note {
     constructor(title, text){
+        this.id = id;
         this.title = title;
         this.text = text;
     }
@@ -7,7 +8,31 @@ class Note {
 
 class App {
     constructor() {
-        this.notes = []
+        this.notes = [];
+
+        this.$activeForm = document.querySelector(".active-form");
+        this.$inactiveForm = document.querySelector(".inactive-form");
+        this.$noteTitle = document.querySelector(".note-title");
+        this.$noteText = document.querySelector(".note-text");
+        this.addEventListeners();
+    }
+
+    addEventListeners(){
+        document.body.addEventListener("click", (event) => {
+            this.handleFormClick(event);
+        })
+    }
+
+    handleFormClick(event){
+        const isActiveFormClickedOn = this.$activeForm.contains(event.target);
+        const isInactiveFormClickedOn = this.$inactiveForm.contains(event.target);
+
+        if(isInactiveFormClickedOn) {
+            this.$inactiveForm.style.display = "none";
+            this.$activeForm.style.display = "block";
+        
+        }
+
     }
 
     addNote(id, { title, text}){
@@ -15,7 +40,7 @@ class App {
         this.notes = [...this.notes, newNote];
     }
 
-    editNote(id, {title, textt}) {
+    editNote(id, {title, text}) {
         this.notes = this.notes.map((note) => {
             if (note.id == id){
                 note.title = title;
@@ -28,7 +53,7 @@ class App {
     }
 
     displayNotes(){
-        this,notes.map(note => console.log(`
+        this.notes.map(note => console.log(`
             ID: ${note.id}
             Title: ${note.title}
             Text: ${note.text}
@@ -38,11 +63,9 @@ class App {
 
     deleteNote({}){
 
-    }
-
-   
+    } 
 }
 
 
-const app = new App()
+const app = new App();
 
