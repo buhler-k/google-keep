@@ -14,6 +14,7 @@ class App {
         this.$inactiveForm = document.querySelector(".inactive-form");
         this.$noteTitle = document.querySelector(".note-title");
         this.$noteText = document.querySelector(".note-text");
+
         this.addEventListeners();
     }
 
@@ -26,6 +27,9 @@ class App {
     handleFormClick(event){
         const isActiveFormClickedOn = this.$activeForm.contains(event.target);
         const isInactiveFormClickedOn = this.$inactiveForm.contains(event.target);
+        const title = this.$noteTitle.value;
+        const text = this.$noteText.value;
+        console.log(cuid())
 
         if(isInactiveFormClickedOn) {
             this.openActiveForm();
@@ -73,6 +77,7 @@ class App {
     }
 
     deleteNote({}){
+        this.notes = this.notes.filter((note) => note.id != id);
 
     } 
 }
