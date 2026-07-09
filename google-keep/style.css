@@ -182,6 +182,10 @@ input:focus{
     
 }
 
+.active-form{
+    display: none;
+}
+
 .active-form form{
     display: flex;
     flex-direction: column;
