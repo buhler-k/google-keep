@@ -28,11 +28,22 @@ class App {
         const isInactiveFormClickedOn = this.$inactiveForm.contains(event.target);
 
         if(isInactiveFormClickedOn) {
-            this.$inactiveForm.style.display = "none";
-            this.$activeForm.style.display = "block";
-        
+            this.openActiveForm();
         }
+        else if(!isInactiveFormClickedOn && !isActiveFormClickedOn){
+            this.closeActiveForm();
+        }
+    }
 
+    openActiveForm(){
+        this.$inactiveForm.style.display = "none";
+        this.$activeForm.style.display = "block";
+        this.$noteText.focus();
+    }
+
+    closeActiveForm(){
+        this.$inactiveForm.style.display = "block";
+        this.$activeForm.style.display = "none";
     }
 
     addNote(id, { title, text}){
