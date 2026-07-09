@@ -156,7 +156,6 @@ input:focus{
     display: flex;
     justify-content: space-between;
     height: 100%;
-    align-items: center;
     color: #5f6368;
 }
 
@@ -168,11 +167,8 @@ input:focus{
 .note-text{
     border: none;
     font-size: 1rem;
-    height: 100%;
-    margin-left: 10px;
     width: 100%;
-    margin-right: 10px;
-    padding-left: 10px;
+    
 }
 
 .note-title{
@@ -232,14 +228,10 @@ input:focus{
     position: relative;
 }
 
-.note .title{
-    width: 100%;
-    margin: 15px 0 0 15px; 
-}
 
 .note .title{
     width: 100%;
-    margin: 15px 0 0 15px;
+    margin-left: 15px;
 }
 
 .note .text{
@@ -247,10 +239,6 @@ input:focus{
     margin: 15px 0 0 15px;
 }
 
-.note .text{
-    width: 100%;
-    margin: 20px 0 0 15px;
-}
 
 .note .note-footer{
     margin-top: 15px;
@@ -279,13 +267,18 @@ input:focus{
     width: 100%;
     height: 100%;
     display: flex;
+    visibility: hidden;
 }
 
 .modal .modal-content{
     width: 100%;
     height: 30vh;
     position: relative;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.open-modal {
+    visibility: visible;
 }
