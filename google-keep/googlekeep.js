@@ -21,8 +21,7 @@ class App {
         this.$modalForm = document.querySelector("#modal-form");
         this.$modalTitle = document.querySelector("#modal-title");
         this.$modalText = document.querySelector("#modal-text");
-
-
+        this.$sidebar = document.querySelector(".sidebar");
 
         this.addEventListeners();
         this.displayNotes();
@@ -46,7 +45,17 @@ class App {
         this.closeActiveForm();
     });
 
+        this.$modalForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+        });
 
+        this.$sidebar.addEventListener("mouseover", (event) => {
+            this.handleToggleSidebar();
+        });
+
+        this.$sidebar.addEventListener("mouseout", (event) => {
+            this.handleToggleSidebar();
+        });
         
     }
 
@@ -68,9 +77,6 @@ class App {
         }
 
     }
-
-
-   
 
     openActiveForm(){
         this.$inactiveForm.style.display = "none";
@@ -136,6 +142,18 @@ class App {
         this.displayNotes();
 
 
+    }
+    handleToggleSidebar(){
+        if(this.miniSidebar){
+            this.$sidebar.style.width = "65px";
+            this.$sidebar.classList.add("sidebar-hover");
+            this.miniSidebar = false
+        }else {
+            this.$sidebar.style.width = "250px";
+            this.$sidebar.classList.remove("sidebar-hover");
+            this.miniSidebar = true;
+
+        }
     }
 
     displayNotes(){
