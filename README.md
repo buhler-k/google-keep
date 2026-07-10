@@ -26,5 +26,11 @@
 
     ##Running the Project
 
-    Clone the repository to your local terminal and open with live server
+    * Clone the repository to your local terminal (git clone github_url).
+
+    * Use "cd google-keep" , then press enter.
+
+    * Use "code ." to open the project in VS Code then press enter.
+
+    *finally, click on "Go live" to navigate to the project's site".
    
