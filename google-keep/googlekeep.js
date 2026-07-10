@@ -21,6 +21,7 @@ class App {
         this.$modalForm = document.querySelector("#modal-form");
         this.$modalTitle = document.querySelector("#modal-title");
         this.$modalText = document.querySelector("#modal-text");
+        this.$closeModalForm = document.querySelector("#modal-btn");
         this.$sidebar = document.querySelector(".sidebar");
 
         this.addEventListeners();
@@ -43,6 +44,19 @@ class App {
         const text = this.$noteText.value;
         this.addNote({title, text})
         this.closeActiveForm();
+    });
+        this.$modalForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const title = this.$noteTitle.value;
+        const text = this.$noteText.value;
+        this.addNote({title, text})
+        this.closeActiveForm();
+    });
+
+
+        this.$closeModalForm.addEventListener("click", (event) => {
+        event.preventDefault();
+        this.closeActiveForm()
     });
 
         this.$modalForm.addEventListener("submit", (event) => {
@@ -103,7 +117,8 @@ class App {
 
     closeModal(event){
         const isModalFormClickedOn = this.$modalForm.contains(event.target);
-        if (!isModalFormClickedOn && this.$modal.classList.contains("open-modal")){
+        const isCloseModalBtnClickedOn = this.$closeModalForm.contains(event.target);
+        if ((!isModalFormClickedOn || isCloseModalBtnClickedOn) && this.$modal.classList.contains("open-modal")){
             this.editNote(this.selectedNoteId,{
                 title: this.$modalTitle.value,
                 text: this.$modalText.value,
