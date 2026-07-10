@@ -262,6 +262,10 @@ input:focus{
     visibility: hidden;
 }
 
+.note:hover .note-footer{
+    visibility: visible;
+}
+
 .note-footer .material-symbols-outlined {
     color: #5f6368;
 }
@@ -271,6 +275,10 @@ input:focus{
     top: -22px;
     left: -22px;
     visibility: hidden;
+}
+
+.note:hover .check-circle{
+    visibility: visible;
 }
 
 /* modal styling */
