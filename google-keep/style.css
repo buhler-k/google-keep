@@ -220,6 +220,8 @@ input:focus{
 
 .notes{
     display: flex;
+    flex-wrap: wrap;
+    padding-left: 100px;
     justify-content: center;
 }
 
