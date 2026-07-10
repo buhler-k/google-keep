@@ -18,6 +18,8 @@ class App {
         this.$form = document.querySelector("#form");
         this.$modal = document.querySelector(".modal");
         this.$modalForm = document.querySelector("#modal-form");
+        this.$modalTitle = document.querySelector("#modal-title");
+        this.$modalText = document.querySelector("#modal-text");
 
 
 
@@ -82,7 +84,11 @@ class App {
     }
 
     openModal(event){
-        if(event.target.closest(".note")){
+        const $selectedNote = event.target.closest(".note")
+        if($selectedNote){
+            
+            this.$modalTitle.value = $selectedNote.children[1].innerHTML;
+            this.$modalText.value = $selectedNote.children[2].innerHTML;
             this.$modal.classList.add("open-modal");
         }
     }
