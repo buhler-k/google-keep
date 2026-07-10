@@ -14,7 +14,11 @@ class App {
         this.$inactiveForm = document.querySelector(".inactive-form");
         this.$noteTitle = document.querySelector("#note-title");
         this.$noteText = document.querySelector("#note-text");
-        this.$notes = document.querySelector(".notes")
+        this.$notes = document.querySelector(".notes");
+        this.$form = document.querySelector("#form");
+        this.$modal = document.querySelector(".modal");
+
+
 
         this.addEventListeners();
     }
@@ -22,8 +26,22 @@ class App {
     addEventListeners(){
         document.body.addEventListener("click", (event) => {
             this.handleFormClick(event);
-        })
+            this.openModal(event);
+        });
+
+        this.$form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const title = this.$noteTitle.value;
+        const text = this.$noteText.value;
+        this.addNote({title, text})
+        this.closeActiveForm();
+    });
+
+
+        
     }
+
+    
 
     handleFormClick(event){
         const isActiveFormClickedOn = this.$activeForm.contains(event.target);
@@ -41,6 +59,9 @@ class App {
         }
     }
 
+
+   
+
     openActiveForm(){
         this.$inactiveForm.style.display = "none";
         this.$activeForm.style.display = "block";
@@ -52,6 +73,12 @@ class App {
         this.$activeForm.style.display = "none";
         this.$noteText.value = "";
         this.$noteTitle.value = "";
+    }
+
+    openModal(event){
+        if(event.target.closest(".note")){
+            this.$modal.classList.add("open-modal");
+        }
     }
 
     addNote({ title, text}){
@@ -78,7 +105,7 @@ class App {
     displayNotes(){
         this.$notes.innerHTML = this.notes.map((note) =>
             `
-                <div class="note" id="$(note.id)">
+                <div class="note" id="${note.id}">
                     <span class="material-symbols-outlined check-circle">check_circle</span>
                     <div class="title">${note.title}</div>
                     <div class="text">${note.text}</div>
